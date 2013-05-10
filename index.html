@@ -1,18 +1,30 @@
-<script src='strict-object.js'></script>
+<pre><code id='test'></code><pre>
+<script src='strict-object.min.js'></script>
 <script>
   var so = new StrictObject({
     style: { type: ['view', 'json', 'feed'], default: 'view', writable: false },
-    query: { type: String, validate: function(val){return /[1-9]/.test(val);} },
+    query: { type: String, validate: function(val){return /^[A-Za-z0-9\s]*$/.test(val);} },
     start: { type: Number, default: 0 },
     limit: { type: Number, default: 50 },
     order: { type: ['name', 'date', 'view', 'star', 'cmnt', 'rate'], default: 'date'},
     mtype: { type: String },
     mtime: { type: /[0-9]+(hour|day|week|month|year)/, default: null },
-    fonly: { type: Boolean, default: true }
+    fonly: { type: Boolean, default: true },
+    hides: { type: null, enumerable: false, default: 'free hidden form' }
   });
   so.style = 'json';
   so.style = 'hoge';
   so.query = 234;
+  so.query = '234';
+  so.query = '../../234';
   so.mtime = '1hour';
-  console.log(so.get());
+  so.mtime = '1minutes';
+
+  prop = so.get();
+  console.log(prop);
+  console.log('>>', so.hides);
+  var getText = function () { return document.getElementById('test').innerText; };
+  for(var k in prop) {
+    document.getElementById('test').innerText = getText() + k + ': ' + prop[k] + '\n';
+  }
 </script>
