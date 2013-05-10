@@ -1,0 +1,18 @@
+<script src='strict-object.js'></script>
+<script>
+  var so = new StrictObject({
+    style: { type: ['view', 'json', 'feed'], default: 'view', writable: false },
+    query: { type: String, validate: function(val){return /[1-9]/.test(val);} },
+    start: { type: Number, default: 0 },
+    limit: { type: Number, default: 50 },
+    order: { type: ['name', 'date', 'view', 'star', 'cmnt', 'rate'], default: 'date'},
+    mtype: { type: String },
+    mtime: { type: /[0-9]+(hour|day|week|month|year)/, default: null },
+    fonly: { type: Boolean, default: true }
+  });
+  so.style = 'json';
+  so.style = 'hoge';
+  so.query = 234;
+  so.mtime = '1hour';
+  console.log(so.get());
+</script>
