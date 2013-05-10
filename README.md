@@ -16,13 +16,15 @@
 
   例えば、以下のように定義します
 
-	var user = new StrictObject({
-		name: { type: String, default: 'anonymous' },
-		mail: { type: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/ },
-		login: { type: Number, default: 0 },
-		last: { type: Date, default: Date.now() },
-		type: { type: ['open', 'public', 'private'], default: 'open' }
-	});
+```js
+var user = new StrictObject({
+  name: { type: String, default: 'anonymous' },
+  mail: { type: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/ },
+  login: { type: Number, default: 0 },
+  last: { type: Date, default: Date.now() },
+  type: { type: ['open', 'public', 'private'], default: 'open' }
+});
+```
 
   値をセットします
 
@@ -72,26 +74,49 @@ validate   | function | 値を第一引数・キーを第二引数に取り、�
 
 ## Example
 
-```
+```coffee
 so = new StrictObject
-  style: { type: ['view', 'json', 'feed'], default: 'view', writable: no }
-  query: { type: String, validate: (val) -> return /^[A-Za-z0-9\s]*$/.test val }
-  start: { type: Number, default: 0 }
-  limit: { type: Number, default: 50 }
-  order: { type: ['name', 'date', 'view', 'star', 'cmnt', 'rate'], default: 'date'}
-  mtype: { type: String }
-  mtime: { type: /[0-9]+(hour|day|week|month|year)/, default: null }
-  fonly: { type: Boolean, default: yes }
-  hides: { type: null, enumerable: no, default: 'free hidden form' }
-so.style = 'json'      # Valid but NOT writable
-so.style = 'hoge'      # Invalid
-so.query = 234         # Invalid
-so.query = '234'       # Valid
-so.query = '../../234' # Invalid
-so.mtime = '1hour'     # Valid
-so.mtime = '1minutes'  # Invalid
+  style:
+    type: ['view', 'json', 'feed']
+    default: 'view'
+    writable: no
+  query:
+    type: String
+    validate: (val) ->
+      return /^[A-Za-z0-9\s]*$/.test val
+  start:
+    type: Number
+    default: 0
+  limit:
+    type: Number
+    default: 50
+  order:
+    type: ['name', 'date', 'view', 'star', 'cmnt', 'rate']
+    default: 'date'
+  mtype:
+    type: String
+  mtime:
+    type: /[0-9]+(hour|day|week|month|year)/
+    default: null
+  fonly:
+    type: Boolean
+    default: yes
+  hides:
+    type: null
+    enumerable: no
+    default: 'free hidden form'
+
+so.style = 'json'           # Valid but NOT writable
+so.style = 'hoge'           # Invalid
+so.query = 234              # Invalid
+so.query = '234'            # Valid
+so.query = './../../../etc' # Invalid (validate function)
+so.mtime = '1hour'          # Valid
+so.mtime = '1minutes'       # Invalid
+
 console.log so.get()
 console.log '>>', so.hides
+
 ###
 { style: 'view',
   query: '234',
