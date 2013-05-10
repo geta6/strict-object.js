@@ -9,6 +9,8 @@ class StrictObject
     _schema = schema
 
     for key, val of _schema
+      unless _schema[key].hasOwnProperty 'type'
+        val.type = _schema[key].type = null
       unless _schema[key].hasOwnProperty 'default'
         val.default = _schema[key].default = null
       unless _schema[key].hasOwnProperty 'writable'

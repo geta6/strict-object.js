@@ -34,6 +34,9 @@ StrictObject = (function() {
     };
     for (key in _schema) {
       val = _schema[key];
+      if (!_schema[key].hasOwnProperty('type')) {
+        val.type = _schema[key].type = null;
+      }
       if (!_schema[key].hasOwnProperty('default')) {
         val["default"] = _schema[key]["default"] = null;
       }

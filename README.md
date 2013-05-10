@@ -15,7 +15,7 @@
 	new StrictObject({/* DEFINITION */});
 
   例えば、以下のように定義します
-  
+
 	var user = new StrictObject({
 		name: { type: String, default: 'anonymous' },
 		mail: { type: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/ },
@@ -25,11 +25,11 @@
 	});
 
   値をセットします
-  
+
 	user.name = 'geta6'
 
   値を参照します
-  
+
 	console.log(user.name); // 'geta6'
 
   続けて、不正な値をセットします
@@ -46,7 +46,7 @@
 
 key        | default  | val
 -----------|----------|-----
-type       | required | 正規表現、候補を列記した配列、型の名前を受け付けます(`String`・`Number`・`Array`・`Self-Definition`)
+type       | null     | 正規表現、候補を列記した配列、型の名前を受け付けます(`String`・`Number`・`Array`・`Self-Definition`)
 default    | null     | デフォルト値を設定します
 writable   | true     | `false`にすると、デフォルト値セット以降の変更を受け付けなくなります
 enumerable | true     | `false`にすると、`StrictObject.get()`した際に、その値を非表示にします
