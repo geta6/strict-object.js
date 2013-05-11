@@ -1,0 +1,21 @@
+{
+  "name": "strictobject",
+  "description": "Create auto-validating object",
+  "version": "0.1.0",
+  "author": "geta6",
+  "dependencies": {},
+  "devDependencies": {
+    "minify": "*",
+    "coffee-script": "*"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/geta6/strict-object.js"
+  },
+  "main": "",
+  "scripts": {},
+  "engines": {
+    "node": "*"
+  }
+}
