@@ -4,9 +4,9 @@ path = require 'path'
 {spawn, exec} = require 'child_process'
 
 option '-w', '--watch', 'Recompile CoffeeScript source file when modified'
-option '-m', '--minify', 'Minify compiled script'
 
 task 'build', 'Compile CoffeeScript source file', (options) ->
+
   opt = ['-c', '-o', 'lib', 'src']
   opt.unshift '-w' if options.watch
 
