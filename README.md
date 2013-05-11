@@ -8,6 +8,14 @@
 
 * `Object.defineProperty`が実装されている環境
 
+## インストール
+
+    git clone geta6/strict-object.js
+
+  もしくは
+
+    npm install strictobject
+
 ## 使い方
 
   newする際、第一引数に定義を渡します
