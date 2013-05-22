@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git://github.com/geta6/strict-object.js"
   },
-  "main": "",
+  "main": "lib/strict-object.js",
   "scripts": {},
   "engines": {
     "node": "*"
