@@ -63,3 +63,6 @@ class StrictObject
       if _schema[key].enumerable is yes
         object[key] = val
     return object
+
+if module? and exports?
+  module.exports = exports = StrictObject
