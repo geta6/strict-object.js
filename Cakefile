@@ -7,7 +7,7 @@ option '-w', '--watch', 'Recompile CoffeeScript source file when modified'
 
 task 'build', 'Compile CoffeeScript source file', (options) ->
 
-  opt = ['-c', '-o', 'lib', 'src']
+  opt = ['-c', '-b', '-o', 'lib', 'src']
   opt.unshift '-w' if options.watch
 
   coffee = spawn (path.resolve 'node_modules', '.bin', 'coffee'), opt
